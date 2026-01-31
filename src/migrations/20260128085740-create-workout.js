@@ -7,15 +7,19 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID
       },
       user_id: {
+        allowNull: false,
+        references:{ model: 'Users', key: 'id' },
+        onDelete: 'CASCADE',
         type: Sequelize.UUID
       },
       title: {
         type: Sequelize.STRING
       },
       scheduled_at: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       notes: {
@@ -28,7 +32,7 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
