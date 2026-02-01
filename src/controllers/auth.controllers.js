@@ -1,4 +1,4 @@
-const authService = require('../sequelize/service/auth.service');
+const authService = require('../services/auth.service');
 
 // User Registration Controller
 async function register(req, res) {
