@@ -14,9 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Workout.init({
-    user_id: DataTypes.UUID,
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
+    },
+    user_id: {
+      type: DataTypes.UUID,
+      allowNull: false
+    },
     title: DataTypes.STRING,
-    scheduled_at: DataTypes.DATE,
+    scheduled_at: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
     notes: DataTypes.TEXT
   }, {
     sequelize,
