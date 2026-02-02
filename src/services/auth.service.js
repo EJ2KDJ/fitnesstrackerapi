@@ -6,7 +6,7 @@ const { JWT_KEY } = process.env;
 const SALT_ROUNDS = 10;
 
 // User Registration
-async function registerUser({name, email, password}) {
+async function registerUser({email, password}) {
 
     //check if email already exists
     const existingUser = await User.findOne({where: {email}});
@@ -18,7 +18,6 @@ async function registerUser({name, email, password}) {
 
     //create user
     const user = await User.create({
-        name,
         email,
         password: hashedPassword
     });

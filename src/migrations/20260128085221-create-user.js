@@ -13,7 +13,8 @@ module.exports = {
         unique: true,
         type: Sequelize.STRING
       },
-      password_hash: {
+      password: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

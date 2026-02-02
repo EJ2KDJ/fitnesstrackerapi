@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4
     },
     email: DataTypes.STRING,
-    password_hash: DataTypes.STRING
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
