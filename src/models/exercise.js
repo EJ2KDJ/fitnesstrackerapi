@@ -14,7 +14,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Exercise.init({
-    name: DataTypes.STRING,
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
+    },
+    name: { type: DataTypes.STRING, allowNull: false },
     muscle_group: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
