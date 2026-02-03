@@ -29,11 +29,12 @@ const WorkoutExercise = require('./workoutexercise')(sequelize, DataTypes);
 User.hasMany(Workout, { foreignKey: 'user_id' });
 Workout.belongsTo(User, { foreignKey: 'user_id' });
 
-Workout.hasMany(WorkoutExercise, { foreignKey: 'workout_id' });
+// Aliases set to match includes used in services
+Workout.hasMany(WorkoutExercise, { foreignKey: 'workout_id', as: 'workout_exercises' });
 WorkoutExercise.belongsTo(Workout, { foreignKey: 'workout_id' });
 
 Exercise.hasMany(WorkoutExercise, { foreignKey: 'exercise_id' });
-WorkoutExercise.belongsTo(Exercise, { foreignKey: 'exercise_id' });
+WorkoutExercise.belongsTo(Exercise, { foreignKey: 'exercise_id', as: 'exercise' });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

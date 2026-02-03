@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   WorkoutExercise.init({
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
+    },
     workout_id: DataTypes.UUID,
     exercise_id: DataTypes.UUID,
     is_completed: DataTypes.BOOLEAN,
