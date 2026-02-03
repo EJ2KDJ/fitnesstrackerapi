@@ -1,8 +1,6 @@
 'use strict';
 
-const { where } = require('sequelize');
-const {Workout, User, WorkoutExercise, Exercise} = require('../models');
-const { up } = require('../migrations/20260128085221-create-user');
+const { sequelize, Workout, User, WorkoutExercise, Exercise } = require('../models');
 
 
 // Get all workouts for a user + exercises ordered by date
@@ -92,6 +90,7 @@ async function createWorkout(userId, data) {
         await transaction.commit();
 
         //before commiting, add return getworkoutbyId here
+        return await getWorkoutById(userId, workout.id);
     } catch (err) {
         console.error('Error creating workout:', err);
         await transaction.rollback();
