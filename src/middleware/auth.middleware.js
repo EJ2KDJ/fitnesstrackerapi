@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_KEY } = process.env;
 
 // Authentication Middleware
-export function auth(req, res, next) {
+function auth(req, res, next) {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -21,3 +21,5 @@ export function auth(req, res, next) {
         return res.status(401).json({ message: 'Invalid token' });
     }
 }
+
+module.exports = {auth};
